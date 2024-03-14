@@ -3,6 +3,7 @@ from controllers.tournament import TournamentManager
 from models.player import Player
 from models.tournament import Tournament
 from views.menu import MenuViews
+import re
 
 
 class MenuManager:
@@ -36,7 +37,7 @@ class MenuManager:
 
     def new_tournament(self):
         """Create new tournament, serialize and save to DB"""
-        self.menu_view.create_tournament_header()
+        self.menu_view.create_new_tournament_menu()
         tournament_info = []
         options = [
             "name",
@@ -155,7 +156,7 @@ class MenuManager:
 
     def new_player(self):
         """Create new player, serialize and save to DB"""
-        self.menu_view.create_new_player_header()
+        self.menu_view.create_new_player_menu()
         player_info = []
         options = [
             "last name",
@@ -169,6 +170,10 @@ class MenuManager:
             user_input = input()
             if user_input == "back":
                 self.main_menu_start()
+            elif item == "birthday (dd/mm/yyyy)":
+                if not re.match(r'^\d{2}/\d{2}/\d{4}$', user_input):
+                    print("Invalid date format! Please enter date in the format dd/mm/yyyy.")
+                    user_input = input("birthday (dd/mm/yyyy): ")
             else:
                 player_info.append(user_input)
 
@@ -253,7 +258,7 @@ class MenuManager:
         user_input = input()
         
         USER_REPORT_CHOICE = {
-            "1": self.player_reports_sorting(Player.load_player_db),
+            "1": self.player_reports_sorting(Player.load_player_db()),
             "2": self.player_reports_sorting(self.reports.tournament_players),
             "3": self.reports.all_tournaments,
             "4": self.reports.tournament_rounds,

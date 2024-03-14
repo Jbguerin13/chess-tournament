@@ -18,7 +18,7 @@ class MenuViews:
         print("\n[exit] Exit")
 
     @staticmethod
-    def create_tournament_header():
+    def create_new_tournament_menu():
         print("\n" * 3 + "--- SETUP A NEW TOURNAMENT ---")
 
     @staticmethod
@@ -88,7 +88,7 @@ class MenuViews:
         print("\n[back] Back to main menu")
 
     @staticmethod
-    def create_new_player_header():
+    def create_new_player_menu():
         print("\n" * 3 + "--- SETUP A NEW PLAYER ---\n")
 
     @staticmethod
