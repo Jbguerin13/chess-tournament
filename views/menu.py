@@ -32,7 +32,6 @@ class MenuViews:
         print(f"{info[0].upper()}, {info[1].title()}", end=' | ')
         print(f"Description : {info[2]}", end=' | ')
         print("Rounds : 4", end=' | ')
-        print(f"Time control : {info[3]}")
         print("\nPlayers (8 total) :\n")
 
         for item in players:

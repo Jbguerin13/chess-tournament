@@ -66,9 +66,8 @@ class MenuManager:
                 name=tournament_info[0],
                 location=tournament_info[1],
                 start_date="Not started",
-                end_date="TBD",
+                end_date="Not defined",
                 description=tournament_info[2],
-                time_control=tournament_info[3],
                 players=tour_players,
                 current_round=1,
                 rounds=[]
@@ -174,6 +173,8 @@ class MenuManager:
                 if not re.match(r'^\d{2}/\d{2}/\d{4}$', user_input):
                     print("Invalid date format! Please enter date in the format dd/mm/yyyy.")
                     user_input = input("birthday (dd/mm/yyyy): ")
+                else:
+                    player_info.append(user_input)
             else:
                 player_info.append(user_input)
 

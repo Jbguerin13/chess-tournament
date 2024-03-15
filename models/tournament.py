@@ -11,7 +11,6 @@ class Tournament:
             start_date: str,
             end_date: str,
             description: str,
-            time_control: str,
             current_round: int,
             players: list,
             rounds: list,
@@ -23,13 +22,12 @@ class Tournament:
         self.start_date = start_date
         self.end_date = end_date
         self.description = description
-        self.time_control = time_control
         self.current_round = current_round
         self.rounds_total = rounds_total
         self.players = players
         self.rounds = rounds
 
-        self.tour_db = TinyDB('database/tournaments.json')
+        self.tour_db = TinyDB('data/tournaments.json')
 
     def serialize_tournament(self):
         """Return serialized tournament info"""
@@ -40,7 +38,6 @@ class Tournament:
             "start_date": self.start_date,
             "end_date": self.end_date,
             "description": self.description,
-            "time_control": self.time_control,
             "current_round": self.current_round,
             "rounds_total": self.rounds_total,
             "players": self.players,
@@ -103,7 +100,7 @@ class Tournament:
 
         @return: list of tournaments
         """
-        db = TinyDB('database/tournaments.json')
+        db = TinyDB('data/tournaments.json')
         db.all()
         tournaments_list = []
         for item in db:

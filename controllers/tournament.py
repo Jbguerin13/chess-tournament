@@ -55,7 +55,7 @@ class TournamentManager:
 
         for i in range(t.rounds_total):
             r.get_match_pairing(top_players[i], bottom_players[i])
-            top_players[i], bottom_players[i] = self.update_opponents(top_players[i], bottom_players[i])
+            top_players[i], bottom_players[i] = self.update_adversaries(top_players[i], bottom_players[i])
 
         self.round_view.display_matches(r.matches)
 
@@ -86,7 +86,7 @@ class TournamentManager:
 
         k = 0
         while k < t.rounds_total:
-            if available_list[1]["id"] in available_list[0]["opponents"]:
+            if available_list[1]["id"] in available_list[0]["adversaries"]:
                 try:
                     available_list, players_added = \
                         self.match_other_option(available_list, players_added, r)
@@ -97,7 +97,7 @@ class TournamentManager:
                         self.match_first_option(available_list, players_added, r)
                     t.players = players_added
 
-            elif available_list[1]["id"] not in available_list[0]["opponents"]:
+            elif available_list[1]["id"] not in available_list[0]["adversaries"]:
                 available_list, players_added = \
                     self.match_first_option(available_list, players_added, r)
                 t.players = players_added
@@ -128,7 +128,7 @@ class TournamentManager:
         @return: updated lists
         """
         r.get_match_pairing(available_list[0], available_list[1])
-        available_list[0], available_list[1] = self.update_opponents(available_list[0], available_list[1])
+        available_list[0], available_list[1] = self.update_adversaries(available_list[0], available_list[1])
 
         available_list, players_added = self.update_player_lists(
             available_list[0],
@@ -148,7 +148,7 @@ class TournamentManager:
         @return: updated lists
         """
         r.get_match_pairing(available_list[0], available_list[2])
-        available_list[0], available_list[2] = self.update_opponents(available_list[0], available_list[2])
+        available_list[0], available_list[2] = self.update_adversaries(available_list[0], available_list[2])
 
         available_list, players_added = self.update_player_lists(
             available_list[0],
@@ -235,9 +235,9 @@ class TournamentManager:
         return available_list, players_added
 
     @staticmethod
-    def update_opponents(player_1, player_2):
-        player_1["opponents"].append(player_2["id"])
-        player_2["opponents"].append(player_1["id"])
+    def update_adversaries(player_1, player_2):
+        player_1["adversaries"].append(player_2["id"])
+        player_2["adversaries"].append(player_1["id"])
 
         return player_1, player_2
 
