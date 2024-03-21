@@ -190,18 +190,19 @@ class TournamentManager:
         """
         
         INPUT_SCORE_CHOICE = {
-            "0": scores_list.extend([0.5, 0.5]),
-            "1": scores_list.extend([1.0, 0.0]),
-            "2": scores_list.extend([0.0, 1.0]),
-            "back": self.back_to_menu()
-
+            "0": lambda: scores_list.extend([0.5, 0.5]),
+            "1": lambda: scores_list.extend([1.0, 0.0]),
+            "2": lambda: scores_list.extend([0.0, 1.0]),
+            "back": lambda: self.back_to_menu()
         }
-        
-        if response not in INPUT_SCORE_CHOICE.values():
+
+        if response in INPUT_SCORE_CHOICE:
+            INPUT_SCORE_CHOICE[response]()
+            if response != "back":
+                return scores_list
+        else:
             self.menu_view.input_error()
             self.input_scores()
-        else:
-            return INPUT_SCORE_CHOICE[response]
 
     @staticmethod
     def update_scores(players, scores_list: list):

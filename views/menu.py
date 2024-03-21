@@ -5,7 +5,7 @@ class MenuViews:
 
     @staticmethod
     def app_title():
-        print("WELCOME FOR THE JB CHESS TOURNAMENT")
+        print("WELCOME IN THE JB APP CHESS TOURNAMENT")
 
     @staticmethod
     def main_menu():

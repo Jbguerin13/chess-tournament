@@ -23,7 +23,6 @@ class Reports:
             "Description",
             "Start date",
             "End date",
-            "Time control",
             "Last round played",
             "Players (ID : Name)",
         ]
@@ -73,9 +72,12 @@ class Reports:
         for i in range(len(tournaments)):
             participants = []
             players = tournaments[i]["players"]
+            print(f"tata : {len(tournaments)}")
             for k in range(len(players)):
                 participants.append(
                     str(players[k]["id"]) + " : " + players[k]["last_name"])
+                print(f"tata :{str(players[k])} ")
+                print(f"toto {participants}")
 
             self.table.add_row([
                 tournaments[i]["id"],
@@ -84,7 +86,6 @@ class Reports:
                 tournaments[i]["description"],
                 tournaments[i]["start_date"],
                 tournaments[i]["end_date"],
-                tournaments[i]["time_control"],
                 str(tournaments[i]["current_round"]-1) + "/" + str(tournaments[i]["rounds_total"]),
                 participants
             ])
@@ -143,7 +144,6 @@ class Reports:
         h_2 = \
             f"Start date : {info['start_date']} | " \
             f"End date : {info['end_date']} | " \
-            f"Time control : {info['time_control']} | " \
             f"Rounds played : {info['current_round']-1}/{info['rounds_total']}"
 
         print(h_1)

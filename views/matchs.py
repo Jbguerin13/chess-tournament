@@ -59,7 +59,7 @@ class RoundViews:
 
         print("\n\n- FINAL SCORES -\n")
         print(f"{t.name.upper()}, {t.location.title()} | Description : {t.description}")
-        print(f"Start : {t.start_date} | End : {t.end_date} | Time control : {t.time_control}\n")
+        print(f"Start : {t.start_date} | End : {t.end_date}\n")
 
         print(self.table)
 
@@ -88,7 +88,7 @@ class RoundViews:
     @staticmethod
     def score_options(match_number):
         print("\nMatch ", match_number)
-        print('[0] Draw')
+        print('[0] Equality')
         print('[1] Player 1 wins')
         print('[2] Player 2 wins')
         print("\n[back] Back to main menu")

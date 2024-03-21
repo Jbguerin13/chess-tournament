@@ -145,7 +145,6 @@ class MenuManager:
                     t["start_date"],
                     t["end_date"],
                     t["description"],
-                    t["time_control"],
                     t["current_round"],
                     t["players"],
                     t["rounds"],
@@ -259,8 +258,8 @@ class MenuManager:
         user_input = input()
         
         USER_REPORT_CHOICE = {
-            "1": self.player_reports_sorting(Player.load_player_db()),
-            "2": self.player_reports_sorting(self.reports.tournament_players),
+            "1": self.player_reports_sorting,
+            "2": self.player_reports_sorting,
             "3": self.reports.all_tournaments,
             "4": self.reports.tournament_rounds,
             "5": self.reports.tournament_matches,
@@ -270,6 +269,10 @@ class MenuManager:
         if user_input not in USER_REPORT_CHOICE.keys():
             self.menu_view.input_error()
             self.reports_menu()
+        elif user_input == "1" :
+            USER_REPORT_CHOICE[user_input](Player.load_player_db())
+        elif user_input == "2" :
+            USER_REPORT_CHOICE[user_input](self.reports.tournament_players())
         else:
             USER_REPORT_CHOICE[user_input]()
 
