@@ -1,8 +1,8 @@
 from datetime import datetime
 
 from models.player import Player
-from models.matchs import Round
-from views.matchs import RoundViews
+from models.round import Round
+from views.round import RoundViews
 from views.menu import MenuViews
 
 
@@ -31,6 +31,10 @@ class TournamentManager:
                 self.next_rounds(t)
                 t.current_round += 1
                 t.update_tournament_db()
+
+            t.end_date = self.timer
+            t.update_timer(t.end_date, 'end_date')
+            self.tournament_end(t)
 
         elif 1 < t.current_round <= t.rounds_total:
             while t.current_round <= t.rounds_total:
