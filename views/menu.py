@@ -14,7 +14,7 @@ class MenuViews:
         print("[2] Resume the last tournament")
         print("[3] Create a new player")
         print("[4] Edit an existing player")
-        print("[5] Reports")
+        print("[5] Make Reports")
         print("\n[exit] Exit")
 
     @staticmethod
@@ -61,9 +61,7 @@ class MenuViews:
         print(f"\nSelect player {player_number} :\n")
         for i in range(len(players)):
             print(f"[{players[i]['id']}]", end=" ")
-            print(f"{players[i]['last_name']}, 
-                  {players[i]['first_name']}",
-                  end=" | ")
+            print(f"{players[i]['last_name']},{players[i]['first_name']}",end=" | ")
             print(f"{players[i]['city']} | {players[i]['birthday']}", end=" | ")
             print(f"Rank : {players[i]['rank']}")
 

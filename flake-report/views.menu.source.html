@@ -65,7 +65,7 @@
                class="code sev- "><tt><i>16</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[4] Edit an existing player&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l17"
-               class="code sev- "><tt><i>17</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[5] Reports&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>17</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[5] Make Reports&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l18"
                class="code sev- "><tt><i>18</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[exit] Exit&quot;</span><span class="p">)</span></tt>
@@ -191,16 +191,7 @@
                class="code sev- "><tt><i>58</i> <span class="sd">        @param players: list of players</span></tt>
             </div>
             <div id="l59"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E501
-                     </span>
-                     Line too long (99 > 79 characters)</li>
-               
-               </ul><tt><i>59</i> <span class="sd">        @param player_number: number of current player for new tournament (if editing player == &quot;&quot;)</span></tt>
+               class="code sev- "><tt><i>59</i> <span class="sd">        @param player_number: number of current player for new tournament (if editing player == &quot;&quot;)</span></tt>
             </div>
             <div id="l60"
                class="code sev- "><tt><i>60</i> <span class="sd">        &quot;&quot;&quot;</span></tt>
@@ -220,23 +211,14 @@
                
                   <li>
                      <span class="count sev-2">
-                        E501
+                        E231
                      </span>
-                     Line too long (86 > 79 characters)</li>
+                     Missing whitespace after ','</li>
                
-               </ul><tt><i>64</i>             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">players</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">players</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; | &quot;</span><span class="p">)</span></tt>
+               </ul><tt><i>64</i>             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">players</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">players</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot; | &quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l65"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E501
-                     </span>
-                     Line too long (80 > 79 characters)</li>
-               
-               </ul><tt><i>65</i>             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">players</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;city&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">players</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;birthday&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; | &quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>65</i>             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">players</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;city&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">players</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;birthday&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; | &quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l66"
                class="code sev- "><tt><i>66</i>             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rank : </span><span class="si">{</span><span class="n">players</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;rank&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
@@ -299,16 +281,7 @@
                class="code sev- "><tt><i>85</i>             <span class="nb">print</span><span class="p">(</span></tt>
             </div>
             <div id="l86"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E501
-                     </span>
-                     Line too long (93 > 79 characters)</li>
-               
-               </ul><tt><i>86</i>                 <span class="sa">f</span><span class="s2">&quot;Round </span><span class="si">{</span><span class="n">tournaments</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;current_round&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">tournaments</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;rounds_total&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>86</i>                 <span class="sa">f</span><span class="s2">&quot;Round </span><span class="si">{</span><span class="n">tournaments</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;current_round&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">tournaments</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;rounds_total&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l87"
                class="code sev- "><tt><i>87</i>             <span class="p">)</span></tt>
