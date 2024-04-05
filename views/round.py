@@ -14,14 +14,14 @@ class RoundViews:
             " ",
             "Name P2",
             "Rank P2",
-            "Score P2"
+            "Score P2",
         ]
 
         self.results_field_names = [
             "Tournament ranking",
             "Name",
             "Final Score",
-            "Global ranking"
+            "Global ranking",
         ]
 
     def display_matches(self, matches):
@@ -34,7 +34,7 @@ class RoundViews:
 
         for i in range(len(matches)):
             row = list(matches[i])
-            row.insert(0, str(i+1))
+            row.insert(0, str(i + 1))
             row.insert(4, "vs.")
 
             self.table.add_row(row)
@@ -50,12 +50,14 @@ class RoundViews:
         self.table.field_names = self.results_field_names
 
         for i in range(len(t.players)):
-            self.table.add_row([
-                i+1,
-                t.players[i]["last_name"] + ", " + t.players[i]["first_name"],
-                t.players[i]["score"],
-                t.players[i]["rank"]
-            ])
+            self.table.add_row(
+                [
+                    i + 1,
+                    t.players[i]["last_name"] + ", " + t.players[i]["first_name"],
+                    t.players[i]["score"],
+                    t.players[i]["rank"],
+                ]
+            )
 
         print("\n\n- FINAL SCORES -\n")
         print(f"{t.name.upper()}, {t.location.title()} | Description : {t.description}")
@@ -88,11 +90,11 @@ class RoundViews:
     @staticmethod
     def score_options(match_number):
         print("\nMatch ", match_number)
-        print('[0] Equality')
-        print('[1] Player 1 wins')
-        print('[2] Player 2 wins')
+        print("[0] Equality")
+        print("[1] Player 1 wins")
+        print("[2] Player 2 wins")
         print("\n[back] Back to main menu")
 
     @staticmethod
     def score_input_prompt():
-        print('\nEnter result :', end=' ')
+        print("\nEnter result :", end=" ")

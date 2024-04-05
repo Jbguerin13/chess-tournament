@@ -29,19 +29,19 @@ class MenuViews:
         @param players: list of selected players
         """
         print("\n\nNew tournament created :\n")
-        print(f"{info[0].upper()}, {info[1].title()}", end=' | ')
-        print(f"Description : {info[2]}", end=' | ')
-        print("Rounds : 4", end=' | ')
+        print(f"{info[0].upper()}, {info[1].title()}", end=" | ")
+        print(f"Description : {info[2]}", end=" | ")
+        print("Rounds : 4", end=" | ")
         print("\nPlayers (8 total) :\n")
 
         for item in players:
-            print(f"Player {players.index(item) + 1} : ", end='')
-            print(f"{item['id']}", end=' | ')
-            print(f"{item['last_name']}, {item['first_name']}", end=' | ')
-            print(f"{item['birthday']}", end=' | ')
+            print(f"Player {players.index(item) + 1} : ", end="")
+            print(f"{item['id']}", end=" | ")
+            print(f"{item['last_name']}, {item['first_name']}", end=" | ")
+            print(f"{item['birthday']}", end=" | ")
             print(f"Rank : {item['rank']}")
 
-        print("\nSave to database ? [y/n] ", end='')
+        print("\nSave to database ? [y/n] ", end="")
 
     @staticmethod
     def tournament_saved():
@@ -49,7 +49,7 @@ class MenuViews:
 
     @staticmethod
     def start_tournament_prompt():
-        print("\nStart tournament now ? [y/n] ", end='')
+        print("\nStart tournament now ? [y/n] ", end="")
 
     @staticmethod
     def select_players(players, player_number):
@@ -60,8 +60,10 @@ class MenuViews:
         """
         print(f"\nSelect player {player_number} :\n")
         for i in range(len(players)):
-            print(f"[{players[i]['id']}]", end=' ')
-            print(f"{players[i]['last_name']}, {players[i]['first_name']}", end=" | ")
+            print(f"[{players[i]['id']}]", end=" ")
+            print(f"{players[i]['last_name']}, 
+                  {players[i]['first_name']}",
+                  end=" | ")
             print(f"{players[i]['city']} | {players[i]['birthday']}", end=" | ")
             print(f"Rank : {players[i]['rank']}")
 
@@ -76,13 +78,15 @@ class MenuViews:
         print("\n" * 3 + "--- SELECT TOURNAMENT ---\n")
 
         for i in range(len(tournaments)):
-            print(f"[{tournaments[i]['id']}]", end=' ')
-            print(tournaments[i]['name'], end=' | ')
-            print(tournaments[i]['location'], end=" | ")
-            print(tournaments[i]['description'], end=' | ')
-            print(f"Started on : {tournaments[i]['start_date']}", end=' | ')
-            print(f"Ended on : {tournaments[i]['end_date']}", end=' | ')
-            print(f"Round {tournaments[i]['current_round']-1}/{tournaments[i]['rounds_total']}")
+            print(f"[{tournaments[i]['id']}]", end=" ")
+            print(tournaments[i]["name"], end=" | ")
+            print(tournaments[i]["location"], end=" | ")
+            print(tournaments[i]["description"], end=" | ")
+            print(f"Started on : {tournaments[i]['start_date']}", end=" | ")
+            print(f"Ended on : {tournaments[i]['end_date']}", end=" | ")
+            print(
+                f"Round {tournaments[i]['current_round']-1}/{tournaments[i]['rounds_total']}"
+            )
 
         print("\n[back] Back to main menu")
 
@@ -97,11 +101,11 @@ class MenuViews:
         @param info: player info list
         """
         print("\n\nNew player created :\n")
-        print(f"{info[0]}, {info[1]}", end=' | ')
-        print(f"Date of birth : {info[2]}", end=' | ')
-        print(f"city : {info[3]}", end=' | ')
+        print(f"{info[0]}, {info[1]}", end=" | ")
+        print(f"Date of birth : {info[2]}", end=" | ")
+        print(f"city : {info[3]}", end=" | ")
         print(f"Rank : {info[4]}")
-        print("\nSave to database ? [y/n] ", end='')
+        print("\nSave to database ? [y/n] ", end="")
 
     @staticmethod
     def update_player_info(p, options):
@@ -139,11 +143,11 @@ class MenuViews:
 
     @staticmethod
     def input_prompt_text(option):
-        print(f"\nEnter {option} (type [back] for main menu) : ", end='')
+        print(f"\nEnter {option} (type [back] for main menu) : ", end="")
 
     @staticmethod
     def input_prompt():
-        print("\nType [option] and press Enter : ", end='')
+        print("\nType [option] and press Enter : ", end="")
 
     @staticmethod
     def want_exit():
@@ -159,11 +163,11 @@ class MenuViews:
 
     @staticmethod
     def other_report():
-        print("\nWould you like to view another report ? [y/n] ", end='')
+        print("\nWould you like to view another report ? [y/n] ", end="")
 
     @staticmethod
     def update_rank():
-        print("\nUpdate ranks ? [y/n] ", end='')
+        print("\nUpdate ranks ? [y/n] ", end="")
 
     @staticmethod
     def rank_update_header(player):

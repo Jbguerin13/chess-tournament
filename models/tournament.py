@@ -4,17 +4,17 @@ from tinydb import TinyDB
 class Tournament:
 
     def __init__(
-            self,
-            t_id: int,
-            name: str,
-            location: str,
-            start_date: str,
-            end_date: str,
-            description: str,
-            current_round: int,
-            players: list,
-            rounds: list,
-            rounds_total=4
+        self,
+        t_id: int,
+        name: str,
+        location: str,
+        start_date: str,
+        end_date: str,
+        description: str,
+        current_round: int,
+        players: list,
+        rounds: list,
+        rounds_total=4,
     ):
         self.t_id = t_id
         self.name = name
@@ -27,7 +27,7 @@ class Tournament:
         self.players = players
         self.rounds = rounds
 
-        self.tour_db = TinyDB('data/tournaments.json')
+        self.tour_db = TinyDB("data/tournaments.json")
 
     def serialize_tournament(self):
         """Return serialized tournament info"""
@@ -46,11 +46,11 @@ class Tournament:
 
     def sort_players_by_rank(self):
         """Sort players by rank (ascending)"""
-        self.players = sorted(self.players, key=lambda x: x.get('rank'))
+        self.players = sorted(self.players, key=lambda x: x.get("rank"))
 
     def sort_players_by_score(self):
         """Sort players by score (descending)"""
-        self.players = sorted(self.players, key=lambda x: x.get('score'), reverse=True)
+        self.players = sorted(self.players, key=lambda x: x.get("score"), reverse=True)
 
     def split_players(self):
         """Split player in 2 halves (top and bottom players)"""
@@ -76,14 +76,14 @@ class Tournament:
         """
         db = self.tour_db
         self.t_id = db.insert(self.serialize_tournament())
-        db.update({'id': self.t_id}, doc_ids=[self.t_id])
+        db.update({"id": self.t_id}, doc_ids=[self.t_id])
 
     def update_tournament_db(self):
         """Update tournament info (after each round) in database"""
         db = self.tour_db
-        db.update({'rounds': self.rounds}, doc_ids=[self.t_id])
-        db.update({'players': self.players}, doc_ids=[self.t_id])
-        db.update({'current_round': self.current_round}, doc_ids=[self.t_id])
+        db.update({"rounds": self.rounds}, doc_ids=[self.t_id])
+        db.update({"players": self.players}, doc_ids=[self.t_id])
+        db.update({"current_round": self.current_round}, doc_ids=[self.t_id])
 
     def update_timer(self, timer, info):
         """Update start or end timer of tournament
@@ -100,7 +100,7 @@ class Tournament:
 
         @return: list of tournaments
         """
-        db = TinyDB('data/tournaments.json')
+        db = TinyDB("data/tournaments.json")
         db.all()
         tournaments_list = []
         for item in db:

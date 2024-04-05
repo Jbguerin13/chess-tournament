@@ -13,7 +13,7 @@ class Reports:
             "First name",
             "City",
             "Birthday",
-            "Rank"
+            "Rank",
         ]
 
         self.tournament_report_field_names = [
@@ -34,14 +34,14 @@ class Reports:
             " ",
             "Name P2",
             "Rank P2",
-            "Score P2"
+            "Score P2",
         ]
 
         self.rounds_report_field_names = [
             "Round #",
             "Started at",
             "Ended at",
-            "Matches"
+            "Matches",
         ]
 
     def display_players(self, players, sorting):
@@ -51,14 +51,16 @@ class Reports:
         self.table.align = "l"
 
         for i in range(len(players)):
-            self.table.add_row([
-                players[i]["id"],
-                players[i]["last_name"],
-                players[i]["first_name"],
-                players[i]["city"],
-                players[i]["birthday"],
-                players[i]["rank"]
-            ])
+            self.table.add_row(
+                [
+                    players[i]["id"],
+                    players[i]["last_name"],
+                    players[i]["first_name"],
+                    players[i]["city"],
+                    players[i]["birthday"],
+                    players[i]["rank"],
+                ]
+            )
 
         print(f"\n\n\n- All players ({sorting}) -\n")
         print(self.table)
@@ -75,20 +77,25 @@ class Reports:
             print(f"tata : {len(tournaments)}")
             for k in range(len(players)):
                 participants.append(
-                    str(players[k]["id"]) + " : " + players[k]["last_name"])
+                    str(players[k]["id"]) + " : " + players[k]["last_name"]
+                )
                 print(f"tata :{str(players[k])} ")
                 print(f"toto {participants}")
 
-            self.table.add_row([
-                tournaments[i]["id"],
-                tournaments[i]["name"],
-                tournaments[i]["location"],
-                tournaments[i]["description"],
-                tournaments[i]["start_date"],
-                tournaments[i]["end_date"],
-                str(tournaments[i]["current_round"]-1) + "/" + str(tournaments[i]["rounds_total"]),
-                participants
-            ])
+            self.table.add_row(
+                [
+                    tournaments[i]["id"],
+                    tournaments[i]["name"],
+                    tournaments[i]["location"],
+                    tournaments[i]["description"],
+                    tournaments[i]["start_date"],
+                    tournaments[i]["end_date"],
+                    str(tournaments[i]["current_round"] - 1)
+                    + "/"
+                    + str(tournaments[i]["rounds_total"]),
+                    participants,
+                ]
+            )
 
         print("\n\n\n- All tournaments -\n")
         print(self.table)
@@ -115,19 +122,11 @@ class Reports:
         for i in range(len(rounds)):
             for j in range(4):
                 if j == 0:
-                    self.table.add_row([
-                        rounds[i][0],
-                        rounds[i][1],
-                        rounds[i][2],
-                        rounds[i][3][j]
-                    ])
+                    self.table.add_row(
+                        [rounds[i][0], rounds[i][1], rounds[i][2], rounds[i][3][j]]
+                    )
                 else:
-                    self.table.add_row([
-                        ' ',
-                        ' ',
-                        ' ',
-                        rounds[i][3][j]
-                    ])
+                    self.table.add_row([" ", " ", " ", rounds[i][3][j]])
 
         print("\n\n- All played rounds -\n")
         print(self.table)
@@ -141,10 +140,11 @@ class Reports:
         print("\n\n")
 
         h_1 = f"{info['name'].upper()}, {info['location'].title()} | Description : {info['description']}"
-        h_2 = \
-            f"Start date : {info['start_date']} | " \
-            f"End date : {info['end_date']} | " \
+        h_2 = (
+            f"Start date : {info['start_date']} | "
+            f"End date : {info['end_date']} | "
             f"Rounds played : {info['current_round']-1}/{info['rounds_total']}"
+        )
 
         print(h_1)
         print(h_2)

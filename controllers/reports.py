@@ -14,7 +14,7 @@ class ReportsManager:
 
         @param players: list of players
         """
-        players = sorted(players, key=lambda x: x.get('last_name'))
+        players = sorted(players, key=lambda x: x.get("last_name"))
         self.reports_view.display_players(players, "by name")
 
     def all_players_rank(self, players):
@@ -22,7 +22,7 @@ class ReportsManager:
 
         @param players: list of players
         """
-        players = sorted(players, key=lambda x: x.get('rank'))
+        players = sorted(players, key=lambda x: x.get("rank"))
         self.reports_view.display_players(players, "by rank")
 
     def tournament_players(self):
@@ -34,7 +34,7 @@ class ReportsManager:
         user_input, tournaments = self.tournament_select()
 
         for i in range(len(tournaments)):
-            if user_input == str(tournaments[i]['id']):
+            if user_input == str(tournaments[i]["id"]):
                 return tournaments[i]["players"]
 
     def all_tournaments(self):
@@ -46,7 +46,9 @@ class ReportsManager:
         user_input, tournaments = self.tournament_select()
 
         self.reports_view.report_header(tournaments[int(user_input) - 1])
-        self.reports_view.display_rounds_report(tournaments[int(user_input) - 1]["rounds"])
+        self.reports_view.display_rounds_report(
+            tournaments[int(user_input) - 1]["rounds"]
+        )
 
     def tournament_matches(self):
         """All matches from a tournament"""
@@ -85,4 +87,5 @@ class ReportsManager:
     @staticmethod
     def back_to_menu():
         from controllers.menu import MenuManager
+
         MenuManager().main_menu_start()

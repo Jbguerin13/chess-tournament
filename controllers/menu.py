@@ -18,17 +18,16 @@ class MenuManager:
         Redirects to respective submenus"""
 
         USER_MENU_CHOICES = {
-            '1': self.new_tournament,
-            '2': self.resume_tournament,
-            '3': self.new_player,
-            '4': self.update_player,
-            '5': self.reports_menu,
-            'exit': self.menu_view.want_exit
+            "1": self.new_tournament,
+            "2": self.resume_tournament,
+            "3": self.new_player,
+            "4": self.update_player,
+            "5": self.reports_menu,
+            "exit": self.menu_view.want_exit,
         }
         self.menu_view.main_menu()
         user_input = input().lower()
         self.menu_view.input_prompt()
-
 
         if user_input not in USER_MENU_CHOICES.keys():
             self.menu_view.input_error()
@@ -39,11 +38,7 @@ class MenuManager:
         """Create new tournament, serialize and save to DB"""
         self.menu_view.create_new_tournament_menu()
         tournament_info = []
-        options = [
-            "name",
-            "location",
-            "description"
-        ]
+        options = ["name", "location", "description"]
 
         for item in options:
             self.menu_view.input_prompt_text(item)
@@ -70,7 +65,7 @@ class MenuManager:
                 description=tournament_info[2],
                 players=tour_players,
                 current_round=1,
-                rounds=[]
+                rounds=[],
             )
             tournament.save_tournament_db()
             self.menu_view.tournament_saved()
@@ -85,7 +80,6 @@ class MenuManager:
 
         elif user_input == "n":
             self.main_menu_start()
-
 
     def select_players(self, players_total):
         """Select players for new tournament
@@ -102,7 +96,7 @@ class MenuManager:
 
         i = 0
         while i < players_total:
-            self.menu_view.select_players(players, i+1)
+            self.menu_view.select_players(players, i + 1)
             self.menu_view.input_prompt()
             user_input = input()
 
@@ -148,7 +142,7 @@ class MenuManager:
                     t["current_round"],
                     t["players"],
                     t["rounds"],
-                    t["rounds_total"]
+                    t["rounds_total"],
                 )
                 self.tour_cont.start_tournament(t)
 
@@ -156,22 +150,20 @@ class MenuManager:
         """Create new player, serialize and save to DB"""
         self.menu_view.create_new_player_menu()
         player_info = []
-        options = [
-            "last name",
-            "first name",
-            "birthday (dd/mm/yyyy)",
-            "city",
-            "rank"
-        ]
+        options = ["last name",
+                   "first name",
+                   "birthday (dd/mm/yyyy)",
+                   "city",
+                   "rank"]
         for item in options:
             self.menu_view.input_prompt_text(item)
             user_input = input()
             if user_input == "back":
                 self.main_menu_start()
             elif item == "birthday (dd/mm/yyyy)":
-                if not re.match(r'^\d{2}/\d{2}/\d{4}$', user_input):
-                    print("Invalid date format! Please enter date in the format dd/mm/yyyy.")
-                    user_input = input("birthday (dd/mm/yyyy): ")
+                if not re.match(r"^\d{2}/\d{2}/\d{4}$", user_input):
+                    print("Please enter date in the format dd/mm/yyyy.")
+                    user_input = input("birthday (dd/mm/yyyy):")
                 else:
                     player_info.append(user_input)
             else:
@@ -187,7 +179,7 @@ class MenuManager:
                 first_name=player_info[1],
                 birthday=player_info[2],
                 city=player_info[3],
-                rank=int(player_info[4])
+                rank=int(player_info[4]),
             )
 
             player.save_player_db()
@@ -210,21 +202,15 @@ class MenuManager:
 
         p = players[int(user_input) - 1]
         p = Player(
-            p['id'],
-            p['last_name'],
-            p['first_name'],
-            p['birthday'],
-            p['city'],
-            p['rank']
+            p["id"],
+            p["last_name"],
+            p["first_name"],
+            p["birthday"],
+            p["city"],
+            p["rank"],
         )
 
-        options = [
-            "last name",
-            "first name",
-            "date of birth",
-            "city",
-            "rank"
-        ]
+        options = ["last name", "first name", "date of birth", "city", "rank"]
         self.menu_view.update_player_info(p, options)
         self.menu_view.input_prompt()
         user_input = input()
@@ -235,7 +221,8 @@ class MenuManager:
         elif int(user_input) <= len(options):
             updated_info = (options[int(user_input) - 1]).replace(" ", "_")
             self.menu_view.input_prompt_text(
-                f"new {options[int(user_input) - 1]}")
+                f"new {options[int(user_input) - 1]}"
+                )
             user_input = input()
 
             if user_input == "back":
@@ -256,22 +243,22 @@ class MenuManager:
         self.menu_view.reports_menu()
         self.menu_view.input_prompt()
         user_input = input()
-        
+
         USER_REPORT_CHOICE = {
             "1": self.player_reports_sorting,
             "2": self.player_reports_sorting,
             "3": self.reports.all_tournaments,
             "4": self.reports.tournament_rounds,
             "5": self.reports.tournament_matches,
-            "back": self.main_menu_start, 
+            "back": self.main_menu_start,
         }
 
         if user_input not in USER_REPORT_CHOICE.keys():
             self.menu_view.input_error()
             self.reports_menu()
-        elif user_input == "1" :
+        elif user_input == "1":
             USER_REPORT_CHOICE[user_input](Player.load_player_db())
-        elif user_input == "2" :
+        elif user_input == "2":
             USER_REPORT_CHOICE[user_input](self.reports.tournament_players())
         else:
             USER_REPORT_CHOICE[user_input]()

@@ -4,13 +4,13 @@ from tinydb import TinyDB
 class Player:
 
     def __init__(
-            self,
-            player_id: int,
-            last_name: str,
-            first_name: str,
-            birthday: str,
-            city: str,
-            rank: int,
+        self,
+        player_id: int,
+        last_name: str,
+        first_name: str,
+        birthday: str,
+        city: str,
+        rank: int,
     ):
         self.player_id = player_id
         self.last_name = last_name
@@ -21,7 +21,7 @@ class Player:
         self.score = 0.0
         self.adversaries = []
 
-        self.player_db = TinyDB('data/players.json')
+        self.player_db = TinyDB("data/players.json")
 
     def serialize_player(self):
         """Return players info"""
@@ -33,7 +33,7 @@ class Player:
             "city": self.city,
             "rank": self.rank,
             "score": self.score,
-            "adversaries": self.adversaries
+            "adversaries": self.adversaries,
         }
 
     def save_player_db(self):
@@ -42,7 +42,7 @@ class Player:
         """
         players_db = self.player_db
         self.player_id = players_db.insert(self.serialize_player())
-        players_db.update({'id': self.player_id}, doc_ids=[self.player_id])
+        players_db.update({"id": self.player_id}, doc_ids=[self.player_id])
 
     def update_player_db(self, info, option):
         """Update player info (from user input) in database
@@ -62,11 +62,10 @@ class Player:
 
         @return: list of players
         """
-        players_db = TinyDB('data/players.json')
+        players_db = TinyDB("data/players.json")
         players_db.all()
         players = []
         for item in players_db:
             players.append(item)
 
         return players
-        

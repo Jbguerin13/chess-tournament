@@ -21,7 +21,7 @@ class TournamentManager:
         """
         if t.current_round == 1:
             t.start_date = self.timer
-            t.update_timer(t.start_date, 'start_date')
+            t.update_timer(t.start_date, "start_date")
 
             self.first_round(t)
             t.current_round += 1
@@ -33,7 +33,7 @@ class TournamentManager:
                 t.update_tournament_db()
 
             t.end_date = self.timer
-            t.update_timer(t.end_date, 'end_date')
+            t.update_timer(t.end_date, "end_date")
             self.tournament_end(t)
 
         elif 1 < t.current_round <= t.rounds_total:
@@ -43,7 +43,7 @@ class TournamentManager:
                 t.update_tournament_db()
 
             t.end_date = self.timer
-            t.update_timer(t.end_date, 'end_date')
+            t.update_timer(t.end_date, "end_date")
             self.tournament_end(t)
 
         elif t.current_round > t.rounds_total:
@@ -59,7 +59,9 @@ class TournamentManager:
 
         for i in range(t.rounds_total):
             r.get_match_pairing(top_players[i], bottom_players[i])
-            top_players[i], bottom_players[i] = self.update_adversaries(top_players[i], bottom_players[i])
+            top_players[i], bottom_players[i] = self.update_adversaries(
+                top_players[i], bottom_players[i]
+            )
 
         self.round_view.display_matches(r.matches)
 
@@ -92,18 +94,21 @@ class TournamentManager:
         while k < t.rounds_total:
             if available_list[1]["id"] in available_list[0]["adversaries"]:
                 try:
-                    available_list, players_added = \
-                        self.match_other_option(available_list, players_added, r)
+                    available_list, players_added = self.match_other_option(
+                        available_list, players_added, r
+                    )
                     t.players = players_added
 
                 except IndexError:
-                    available_list, players_added = \
-                        self.match_first_option(available_list, players_added, r)
+                    available_list, players_added = self.match_first_option(
+                        available_list, players_added, r
+                    )
                     t.players = players_added
 
             elif available_list[1]["id"] not in available_list[0]["adversaries"]:
-                available_list, players_added = \
-                    self.match_first_option(available_list, players_added, r)
+                available_list, players_added = self.match_first_option(
+                    available_list, players_added, r
+                )
                 t.players = players_added
 
             k += 1
@@ -132,13 +137,12 @@ class TournamentManager:
         @return: updated lists
         """
         r.get_match_pairing(available_list[0], available_list[1])
-        available_list[0], available_list[1] = self.update_adversaries(available_list[0], available_list[1])
+        available_list[0], available_list[1] = self.update_adversaries(
+            available_list[0], available_list[1]
+        )
 
         available_list, players_added = self.update_player_lists(
-            available_list[0],
-            available_list[1],
-            available_list,
-            players_added
+            available_list[0], available_list[1], available_list, players_added
         )
 
         return available_list, players_added
@@ -152,13 +156,12 @@ class TournamentManager:
         @return: updated lists
         """
         r.get_match_pairing(available_list[0], available_list[2])
-        available_list[0], available_list[2] = self.update_adversaries(available_list[0], available_list[2])
+        available_list[0], available_list[2] = self.update_adversaries(
+            available_list[0], available_list[2]
+        )
 
         available_list, players_added = self.update_player_lists(
-            available_list[0],
-            available_list[2],
-            available_list,
-            players_added
+            available_list[0], available_list[2], available_list, players_added
         )
 
         return available_list, players_added
@@ -192,12 +195,12 @@ class TournamentManager:
         @param scores_list: list of scores
         @return: updated list of scores
         """
-        
+
         INPUT_SCORE_CHOICE = {
             "0": lambda: scores_list.extend([0.5, 0.5]),
             "1": lambda: scores_list.extend([1.0, 0.0]),
             "2": lambda: scores_list.extend([0.0, 1.0]),
-            "back": lambda: self.back_to_menu()
+            "back": lambda: self.back_to_menu(),
         }
 
         if response in INPUT_SCORE_CHOICE:
@@ -285,12 +288,12 @@ class TournamentManager:
             if int(user_input) == players[i]["id"]:
                 p = players[players.index(players[i])]
                 p = Player(
-                    p['id'],
-                    p['last_name'],
-                    p['first_name'],
-                    p['birthday'],
-                    p['city'],
-                    p['rank']
+                    p["id"],
+                    p["last_name"],
+                    p["first_name"],
+                    p["birthday"],
+                    p["city"],
+                    p["rank"],
                 )
 
                 self.menu_view.rank_update_header(p)
@@ -309,4 +312,5 @@ class TournamentManager:
     @staticmethod
     def back_to_menu():
         from controllers.menu import MenuManager
+
         MenuManager().main_menu_start()
