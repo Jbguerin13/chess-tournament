@@ -15,9 +15,9 @@ class TournamentManager:
         self.timer = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     def start_tournament(self, t):
-        """Tournament (t) main structure
-        Start from first round or resume tournament according to round number
+        """Start from first round or resume tournament according to round number
         Set start and end timers and save to DB
+        param : Tournament = t main structure
         """
         if t.current_round == 1:
             t.start_date = self.timer
@@ -131,10 +131,10 @@ class TournamentManager:
     def match_first_option(self, available_list, players_added, r):
         """Main pairing option
 
-        @param available_list: list of players not set in match for current round
-        @param players_added: list of players already in match for current round
-        @param r: current round
-        @return: updated lists
+        param : list of players not set in match for current round
+        param : list of players already in match for current round
+        param r: current round
+        return: updated lists
         """
         r.get_match_pairing(available_list[0], available_list[1])
         available_list[0], available_list[1] = self.update_adversaries(
@@ -150,10 +150,10 @@ class TournamentManager:
     def match_other_option(self, available_list, players_added, r):
         """Alternative pairing option
 
-        @param available_list: list of players not set in match for current round
-        @param players_added: list of players already in match for current round
-        @param r: current round
-        @return: updated lists
+        param : list of players not set in match for current round
+        param : list of players already in match for current round
+        param : current round
+        return: updated lists
         """
         r.get_match_pairing(available_list[0], available_list[2])
         available_list[0], available_list[2] = self.update_adversaries(
@@ -169,9 +169,9 @@ class TournamentManager:
     def end_of_round(self, scores_list: list, t):
         """End of round : update player scores
 
-        @param t: current tournament
-        @param scores_list: list of scores
-        @return: players list with updated scores
+        param t: current tournament
+        param scores_list: list of scores
+        return: players list with updated scores
         """
         for i in range(t.rounds_total):
             self.round_view.score_options(i + 1)
@@ -191,9 +191,9 @@ class TournamentManager:
     def get_score(self, response, scores_list: list):
         """Input scores for each match in current round
 
-        @param response: user input (str)
-        @param scores_list: list of scores
-        @return: updated list of scores
+        param response: user input (str)
+        param scores_list: list of scores
+        return: updated list of scores
         """
 
         INPUT_SCORE_CHOICE = {
@@ -214,10 +214,9 @@ class TournamentManager:
     @staticmethod
     def update_scores(players, scores_list: list):
         """Update player scores
-
-        @param players: list of players
-        @param scores_list: list of scores
-        @return: list of players with updated scores
+        param players: list of players
+        param scores_list: list of scores
+        return: list of players with updated scores
         """
         for i in range(len(players)):
             players[i]["score"] += scores_list[i]
@@ -230,11 +229,11 @@ class TournamentManager:
         Add unavailable player to respective list
         Remove available player form respective list
 
-        @param player_1: player 1 (dict)
-        @param player_2: player 2 (dict)
-        @param available_list: list of players not set in match for current round
-        @param players_added: list of players already in match for current round
-        @return: list of available players, list of unavailable players
+        param : player 1 (dict)
+        param : player 2 (dict)
+        param : list of players not set in match for current round
+        param : list of players already in match for current round
+        return: list of available players, list of unavailable players
         """
         players_added.extend([player_1, player_2])
         available_list.remove(player_1)
@@ -253,7 +252,7 @@ class TournamentManager:
         """End of tournament : display final results
         Offer user to update ranks
 
-        @param t: current tournament dict
+        param t: current tournament dict
         """
         t.sort_players_by_rank()
         t.sort_players_by_score()
@@ -275,7 +274,7 @@ class TournamentManager:
     def update_ranks(self, players):
         """Update player ranks and save to DB
 
-        @param players: tournament player list
+        param players: tournament player list
         """
         self.menu_view.select_players(players, "to update")
         self.menu_view.input_prompt()

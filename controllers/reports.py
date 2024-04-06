@@ -12,7 +12,7 @@ class ReportsManager:
     def all_players_name(self, players):
         """Player report (sorted by last name)
 
-        @param players: list of players
+        param: list of players
         """
         players = sorted(players, key=lambda x: x.get("last_name"))
         self.reports_view.display_players(players, "by name")
@@ -20,7 +20,7 @@ class ReportsManager:
     def all_players_rank(self, players):
         """Player report (sorted by rank)
 
-        @param players: list of players
+        param list of players
         """
         players = sorted(players, key=lambda x: x.get("rank"))
         self.reports_view.display_players(players, "by rank")
@@ -29,7 +29,7 @@ class ReportsManager:
         """Players in a tournament report
         Select tournament to display players
 
-        @return: player list of selected tournament
+        return : player list of selected tournament
         """
         user_input, tournaments = self.tournament_select()
 
@@ -71,7 +71,7 @@ class ReportsManager:
     def tournament_select(self):
         """Load all tournaments for selection
 
-        @return: user selection, list of all tournaments
+        return: user selection, list of all tournaments
         """
         tournaments = Tournament.load_tournament_db()
         self.menu_view.select_tournament(tournaments)

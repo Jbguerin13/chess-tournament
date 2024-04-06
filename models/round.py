@@ -10,7 +10,7 @@ class Round:
         self.matches = []
 
     def set_round(self):
-        """Return round info as list"""
+        """return : round info as list"""
         return [self.round_name, self.start_datetime, self.end_datetime, self.matches]
 
     def get_match_pairing(self, player_1, player_2):

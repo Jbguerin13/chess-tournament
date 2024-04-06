@@ -84,8 +84,8 @@ class MenuManager:
     def select_players(self, players_total):
         """Select players for new tournament
 
-        @param players_total: number of players (int)
-        @return: list of selected players
+        param:  players_total, number of players (int)
+        return: list of selected players
         """
         players = Player.load_player_db()
         id_list = []

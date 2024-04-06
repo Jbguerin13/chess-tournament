@@ -103,7 +103,7 @@ Vous pouvez créer votre premier tournois en rentrant toutes les information né
 
 <br>
 
-Il vous faut des données déjà des données sauvegarder dans le dossier data pour pouvoir éditer un rapport. Sans celaa le programme renverra une erreur.
+Il vous faut des données déjà sauvegardées dans le dossier data pour pouvoir éditer un rapport. Sans cela le programme renverra une erreur.
 La partie rapport va piocher dans le dossier data et va trier les informations en fonction de votre choix. Vous pouvez faire un rapport
 de tous les joueurs sauvegardés, de tous les tournois et du détail des rounds et des matches de chaque tournois.
 

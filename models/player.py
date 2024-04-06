@@ -47,8 +47,8 @@ class Player:
     def update_player_db(self, info, option):
         """Update player info (from user input) in database
 
-        @param info: user input (str, or int inf "rank")
-        @param option: update info category
+        param info: user input (str, or int inf "rank")
+        param option: update info category
         """
         db = self.player_db
         if option == "rank":
@@ -60,7 +60,7 @@ class Player:
     def load_player_db():
         """Load player database
 
-        @return: list of players
+        return: list of players
         """
         players_db = TinyDB("data/players.json")
         players_db.all()

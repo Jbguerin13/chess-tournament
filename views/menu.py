@@ -55,13 +55,13 @@ class MenuViews:
     def select_players(players, player_number):
         """Display all players to select
 
-        @param players: list of players
-        @param player_number: number of current player for new tournament (if editing player == "")
+        param players: list of players
+        param player_number: number of current player for new tournament (if editing player == "")
         """
         print(f"\nSelect player {player_number} :\n")
         for i in range(len(players)):
             print(f"[{players[i]['id']}]", end=" ")
-            print(f"{players[i]['last_name']},{players[i]['first_name']}",end=" | ")
+            print(f"{players[i]['last_name']}, {players[i]['first_name']}", end=" | ")
             print(f"{players[i]['city']} | {players[i]['birthday']}", end=" | ")
             print(f"Rank : {players[i]['rank']}")
 
@@ -71,7 +71,7 @@ class MenuViews:
     def select_tournament(tournaments):
         """Display all tournaments to select
 
-        @param tournaments: tournaments list
+        param tournaments: tournaments list
         """
         print("\n" * 3 + "--- SELECT TOURNAMENT ---\n")
 
@@ -96,7 +96,7 @@ class MenuViews:
     def review_player(info):
         """Display all input info to review before saving to database
 
-        @param info: player info list
+        param info: player info list
         """
         print("\n\nNew player created :\n")
         print(f"{info[0]}, {info[1]}", end=" | ")
@@ -109,8 +109,8 @@ class MenuViews:
     def update_player_info(p, options):
         """Player info editing prompts
 
-        @param p: currently edited player
-        @param options: editable options
+        param p: currently edited player
+        param options: editable options
         """
         print("\n\n--- UPDATE PLAYER INFO ---\n")
         print(f"Updating {p.last_name}, {p.first_name}\n")

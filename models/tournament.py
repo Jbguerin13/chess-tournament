@@ -30,7 +30,7 @@ class Tournament:
         self.tour_db = TinyDB("data/tournaments.json")
 
     def serialize_tournament(self):
-        """Return serialized tournament info"""
+        """return serialized tournament info"""
         return {
             "id": self.t_id,
             "name": self.name,
@@ -60,8 +60,8 @@ class Tournament:
     def merge_players(self, top_players, bottom_players):
         """Merge top and bottom players in order of matches
 
-        @param top_players: top half of players (list)
-        @param bottom_players: bottom half of players (list)
+        param top_players: top half of players (list)
+        param bottom_players: bottom half of players (list)
         """
         merged_players = []
         for i in range(len(self.players) // 2):
@@ -88,8 +88,8 @@ class Tournament:
     def update_timer(self, timer, info):
         """Update start or end timer of tournament
 
-        @param timer: date and time info (str)
-        @param info: start or end time (str)
+        param timer: date and time info (str)
+        param info: start or end time (str)
         """
         db = self.tour_db
         db.update({info: timer}, doc_ids=[self.t_id])
@@ -98,7 +98,7 @@ class Tournament:
     def load_tournament_db():
         """Load tournament database
 
-        @return: list of tournaments
+        return: list of tournaments
         """
         db = TinyDB("data/tournaments.json")
         db.all()
